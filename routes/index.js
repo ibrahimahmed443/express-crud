@@ -30,7 +30,17 @@ router.get('/', function(req, res) {
 //Index: Get all books...
 router.get('/books', function(req, res){
 	books_collection.find({}, function(err, docs){
-		res.render('books/index', {"books": docs});
+		//res.json(docs);
+		res.render('books/index', {books: docs});
+	});
+});
+
+//Show: Return a single book given book ID...
+router.get('/books/:id', function(req,res){
+	id = req.params.id
+	books_collection.find({_id: id}, function(err, doc){
+		//res.json(doc)
+		res.render('books/show', {book:doc[0]});
 	});
 });
 

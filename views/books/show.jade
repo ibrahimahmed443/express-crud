@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+
+	#left
+		h2= book.title
+		em written by
+		h3 #{book.author}
+
+		h4 Additional information:
+		
+		p Pages: #{book.pages}
+		| Price: #{book.price}
+
+	#right
+		img(src="#{book.image_url}", alt="#{book.title}")

@@ -3,4 +3,5 @@ extends ../layout
 block content
 	ul
 	each book in books
-		li= book.title
+		li
+			a(href="/books/#{book._id}") #{book.title}
