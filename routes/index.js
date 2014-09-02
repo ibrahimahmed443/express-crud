@@ -36,7 +36,7 @@ router.get('/books', function(req, res){
 });
 
 //Show: Return a single book given book ID...
-router.get('/books/:id', function(req,res){
+router.get('/books/show/:id', function(req,res){
 	id = req.params.id
 	books_collection.find({_id: id}, function(err, doc){
 		//res.json(doc)
