@@ -98,6 +98,15 @@ router.put('/books/update/', function(req, res){
 	})
 });
 
+
+//Destroy: delete a book given its id....
+router.delete('/books/destroy/:id', function(req, res){
+	books_collection.remove({_id: req.params.id}, function(err){
+		res.redirect('/books');
+	});
+});
+
+
 module.exports = router;
 
 
