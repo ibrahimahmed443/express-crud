@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+
+	h1 Edit book
+
+	form(method='post', action='/books/update?_method=PUT')
+		p
+
+			input(type='text', name='title', value='#{book.title}', placeholder='Title')
+			br
+
+			input(type='text', name='author', value='#{book.author}', placeholder='Author')
+			br
+			
+			input(type='text', name='pages', value='#{book.pages}', placeholder='Pages')
+			br
+			
+			input(type='text', name='price', value='#{book.price}', placeholder='Price')
+			br
+			
+			input(type='text', name='image_url', value='#{book.image_url}', placeholder='Image URL')
+			br
+
+			input(type='hidden', name='id', value='#{book._id}')
+			br
+
+			input(type='submit', name='submit', value='Submit')

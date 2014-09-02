@@ -70,6 +70,33 @@ router.post('/books/create', function(req, res){
 	});
 });
 
+//Edit: Render an edit form, similar to a new form...
+router.get('/books/edit/:id', function(req, res){
+
+	id = req.params.id
+	books_collection.find({_id: id}, function(err, doc){
+		res.render('books/edit', {book:doc[0]});
+	});
+
+});
+
+//Update: update a book specified by its id...
+router.put('/books/update/', function(req, res){
+	
+	b = req.body;
+	
+
+	data =  {title: b.title,
+			author: b.author,
+			pages: parseInt(b.pages),
+			price: parseInt(b.price),
+			image_url: b.image_url,
+			id: b.id};
+
+	books_collection.update({_id:data.id}, data, function(err, docsAffected){
+		res.redirect('/books/show/' + data.id)
+	})
+});
 
 module.exports = router;
 
