@@ -2,7 +2,7 @@ extends ../layout
 
 block content
 
-	#left
+	.left
 		h2= book.title
 		em written by
 		h3 #{book.author}
@@ -12,5 +12,15 @@ block content
 		p Pages: #{book.pages}
 		| Price: #{book.price}
 
-	#right
+	.right
 		img(src="#{book.image_url}", alt="#{book.title}")
+
+	.clear 
+
+	.actions
+		form(method="GET", action="/books/edit/#{book.id}")
+			input(type="submit", name="edit", value="Edit")
+	
+		form(method="POST", action="/books/destroy/#{book.id}?_method=DELETE",
+			onsubmit="return confirmDelete()")
+			input(type="submit", name="delete", value="Delete")

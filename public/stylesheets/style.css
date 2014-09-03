@@ -9,10 +9,16 @@ a {
   color: #00B7FF;
 }
 
-#left{
+.left{
 	float: left;
 }
 
-#right{
+.right{
 	float: right;
+	max-height: 250px;
+	max-width: 400px;
+}
+
+.clear{
+	clear: both;
 }

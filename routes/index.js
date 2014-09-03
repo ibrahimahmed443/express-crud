@@ -66,7 +66,8 @@ router.post('/books/create', function(req, res){
 		if (err)
 			res.json(err);
 		else
-			res.json(docs);
+			//res.json(docs);
+			res.redirect('/books/show/' + docs._id)
 	});
 });
 
@@ -95,7 +96,7 @@ router.put('/books/update/', function(req, res){
 
 	books_collection.update({_id:data.id}, data, function(err, docsAffected){
 		res.redirect('/books/show/' + data.id)
-	})
+	});
 });
 
 
