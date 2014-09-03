@@ -3,9 +3,9 @@ express-crud
 
 A basic CRUD app written in Express/Node for a books collection using Mongodb.
 
-Note: This app should only be used for learning purposes. This is not a production-ready code and is it's a work-in-progress.
+Note: This app should only be used for learning purposes. This is not a production-ready code and it's a work-in-progress.
 
-Note: App is now live at http://express-books-app.herokuapp.com/books
+Note: App is now live at http://express-books-app.herokuapp.com/
 
 
 Install
