@@ -71,7 +71,7 @@ conn.once('open', function callback () {
 		data =  {title: b.title,
 				author: b.author,
 				pages: parseInt(b.pages),
-				price: parseInt(b.price),
+				price: parseFloat(b.price),
 				image_url: b.image_url};
 
 		var book = new books_collection(data);
@@ -104,7 +104,7 @@ conn.once('open', function callback () {
 		data =  {title: b.title,
 				author: b.author,
 				pages: parseInt(b.pages),
-				price: parseInt(b.price),
+				price: parseFloat(b.price),
 				image_url: b.image_url,
 				id: b.id};
 
