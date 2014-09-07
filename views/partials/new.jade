@@ -1,0 +1,22 @@
+h1 Create a new book
+
+h2 {{name}}
+form(method='post', action='/books/create')
+	p
+		input(type='text', name='title', placeholder='Title')
+		br
+
+		input(type='text', name='author', placeholder='Author')
+		br
+		
+		input(type='text', name='pages', placeholder='Pages')
+		br
+		
+		input(type='text', name='price', placeholder='Price')
+		br
+		
+		input(type='text', name='image_url', placeholder='Image URL')
+		br
+		br
+
+		input(type='submit', name='submit', value='Submit')

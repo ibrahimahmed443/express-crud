@@ -1,0 +1,10 @@
+
+//- ul
+//- each book in books
+//- 	li
+//- 		a(href="/books/show/#{book._id}") #{book.title}
+
+
+ul(class="books")
+	li(ng-repeat="book in books") 
+		{{book.title}}

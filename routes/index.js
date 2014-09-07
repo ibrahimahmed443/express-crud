@@ -35,23 +35,29 @@ conn.once('open', function callback () {
 	 
 	books_collection = mongoose.model('books', bookSchema);
 
+	router.get('/partials/:name', function(req, res) {
+		var name = req.params.name;
+		res.render('partials/' + name);
+	});
+
 	/* GET home page. */
 	router.get('/', function(req, res) {
+		console.log("req received");
 		res.render('index', { title: 'Books Collection'});
 	});
 
-
+	
 	//Index: Get all books...
 	router.get('/books', function(req, res){
 		books_collection.find({}, function(err, docs){
-			//res.json(docs);
-			res.render('books/index', {books: docs});
+			res.json(docs);
+			//res.render('books/index', {books: docs});
 		});
 	});
 
 	//Show: Return a single book given book ID...
 	router.get('/books/show/:id', function(req,res){
-		id = req.params.id
+		id = req.params.id;
 		books_collection.find({_id: id}, function(err, doc){
 			//res.json(doc)
 			res.render('books/show', {book:doc[0]});
@@ -60,17 +66,17 @@ conn.once('open', function callback () {
 
 	//New: render a form to create new book...
 	router.get('/books/new', function(req, res){
-		res.render('books/new')
+		res.render('books/new');
 	});
 
 	//Create: post a form to create a new book...
 	router.post('/books/create', function(req, res){
 		
-		b = req.body
+		b = req.body;
 
 		data =  {title: b.title,
 				author: b.author,
-				pages: parseInt(b.pages),
+				pages: parseInt(b.pages, 10),
 				price: parseFloat(b.price),
 				image_url: b.image_url};
 
@@ -81,14 +87,14 @@ conn.once('open', function callback () {
 				res.json(err);
 			else
 				//res.json(docs);
-				res.redirect('/books/show/' + docs._id)
+				res.redirect('/books/show/' + docs._id);
 		});
 	});
 
 	//Edit: Render an edit form, similar to a new form...
 	router.get('/books/edit/:id', function(req, res){
 
-		id = req.params.id
+		id = req.params.id;
 		books_collection.find({_id: id}, function(err, doc){
 			res.render('books/edit', {book:doc[0]});
 		});
@@ -103,13 +109,13 @@ conn.once('open', function callback () {
 
 		data =  {title: b.title,
 				author: b.author,
-				pages: parseInt(b.pages),
+				pages: parseInt(b.pages, 10),
 				price: parseFloat(b.price),
 				image_url: b.image_url,
 				id: b.id};
 
 		books_collection.update({_id:data.id}, data, function(err, docsAffected){
-			res.redirect('/books/show/' + data.id)
+			res.redirect('/books/show/' + data.id);
 		});
 	});
 

@@ -1,13 +1,21 @@
 doctype html
-html
+html(ng-app="booksApp")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="/javascripts/lib/angular.js")
+    script(src="/javascripts/lib/angular-route.js")
+    script(src="/javascripts/controllers.js")
+    script(src="/javascripts/app.js")
     script(src="/javascripts/main.js")
   body
     .navigation
-      a(href="/books") Show all books
+
+      a(href="#/books") Show all books
       ||  
-      a(href="/books/new") Create new
+      a(href="#/books/new") Create new
+
 
     block content
+
+    
