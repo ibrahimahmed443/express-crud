@@ -1,7 +1,7 @@
 express-crud
 ============
 
-A basic CRUD app written in Express/Node for a books collection using Mongodb and using Angular for the front end.
+A basic CRUD app written in Express/Node for a books collection using Mongodb and Angular for the front end.
 
 Note: This app should only be used for learning purposes. This is not a production-ready code and it's a work-in-progress.
 
