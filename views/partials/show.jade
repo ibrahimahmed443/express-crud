@@ -1,26 +1,21 @@
-extends ../layout
+.left
+	h2 {{book.title}}
+	em written by
+	h3 {{book.author}}
 
-block content
+	h4 Additional information:
 
-	.left
-		h2= book.title
-		em written by
-		h3 #{book.author}
+	p Pages: {{book.pages}}
+	| Price: {{book.price}}
 
-		h4 Additional information:
-		
-		p Pages: #{book.pages}
-		| Price: #{book.price}
+.right
+	//- img(ng-src="{{book.image_url}}")
 
-	.right
-		img(src="#{book.image_url}", alt="#{book.title}")
+.clear
 
-	.clear 
-
-	.actions
-		form(method="GET", action="/books/edit/#{book.id}")
-			input(type="submit", name="edit", value="Edit")
+.actions
+	br
 	
-		form(method="POST", action="/books/destroy/#{book.id}?_method=DELETE",
-			onsubmit="return confirmDelete()")
-			input(type="submit", name="delete", value="Delete")
+	button(ng-click="editBook()") Edit
+	button(ng-click="deleteBook()") Delete
+

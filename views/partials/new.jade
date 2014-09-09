@@ -1,22 +1,24 @@
 h1 Create a new book
 
 h2 {{name}}
-form(method='post', action='/books/create')
+form
 	p
-		input(type='text', name='title', placeholder='Title')
+
+		br
+		input(type='text', name='title', ng-model='form.title', placeholder='Title')
 		br
 
-		input(type='text', name='author', placeholder='Author')
+		input(type='text', name='author', ng-model='form.author', placeholder='Author')
 		br
 		
-		input(type='text', name='pages', placeholder='Pages')
+		input(type='text', name='pages', ng-model='form.pages', placeholder='Pages')
 		br
 		
-		input(type='text', name='price', placeholder='Price')
+		input(type='text', name='price', ng-model='form.price', placeholder='Price')
 		br
 		
-		input(type='text', name='image_url', placeholder='Image URL')
+		input(type='text', name='image_url', ng-model='form.image_url', placeholder='Image URL')
 		br
 		br
 
-		input(type='submit', name='submit', value='Submit')
+		button(ng-click='submitBook()', name='submit') Submit 

@@ -59,8 +59,8 @@ conn.once('open', function callback () {
 	router.get('/books/show/:id', function(req,res){
 		id = req.params.id;
 		books_collection.find({_id: id}, function(err, doc){
-			//res.json(doc)
-			res.render('books/show', {book:doc[0]});
+			res.json(doc[0]);
+			//res.render('books/show', {book:doc[0]});
 		});
 	});
 
@@ -82,12 +82,12 @@ conn.once('open', function callback () {
 
 		var book = new books_collection(data);
 
-		book.save(function(err, docs){
+		book.save(function(err, doc){
 			if (err)
 				res.json(err);
 			else
-				//res.json(docs);
-				res.redirect('/books/show/' + docs._id);
+				res.json(doc);
+				//res.redirect('/books/show/' + docs._id);
 		});
 	});
 
@@ -96,34 +96,37 @@ conn.once('open', function callback () {
 
 		id = req.params.id;
 		books_collection.find({_id: id}, function(err, doc){
-			res.render('books/edit', {book:doc[0]});
+			res.json(doc[0]);
+			//res.render('books/edit', {book:doc[0]});
+
 		});
 
 	});
 
 	//Update: update a book specified by its id...
-	router.put('/books/update/', function(req, res){
+	router.put('/books/update/:id', function(req, res){
 		
 		b = req.body;
-		
+		id = req.params.id;
 
 		data =  {title: b.title,
 				author: b.author,
 				pages: parseInt(b.pages, 10),
 				price: parseFloat(b.price),
 				image_url: b.image_url,
-				id: b.id};
+				id: id};
 
 		books_collection.update({_id:data.id}, data, function(err, docsAffected){
-			res.redirect('/books/show/' + data.id);
+			//res.redirect('/books/show/' + data.id);
+			res.json(docsAffected);
 		});
 	});
 
 
 	//Destroy: delete a book given its id....
 	router.delete('/books/destroy/:id', function(req, res){
-		books_collection.remove({_id: req.params.id}, function(err){
-			res.redirect('/books');
+		books_collection.remove({_id: req.params.id}, function(err, docsAffected){
+			res.json(docsAffected);
 		});
 	});
 

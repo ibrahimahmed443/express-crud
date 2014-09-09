@@ -1,31 +1,26 @@
-extends ../layout
+h1 Edit book
 
-block content
+form
+	p
 
-	h1 Edit book
+		input(type='text', name='title', ng-model='form.title', value='{{form.title}}', placeholder='Title')
+		br
 
-	form(method='post', action='/books/update?_method=PUT')
-		p
+		input(type='text', name='author', ng-model='form.author', value='{{form.author}}', placeholder='Author')
+		br
+		
+		input(type='text', name='pages', ng-model='form.pages', value='{{form.pages}}', placeholder='Pages')
+		br
+		
+		input(type='text', name='price', ng-model='form.price', value='{{form.price}}', placeholder='Price')
+		br
+		
+		input(type='text', name='image_url', ng-model='form.image_url', value='{{form.image_url}}', placeholder='Image URL')
+		br
 
-			input(type='text', name='title', value='#{book.title}', placeholder='Title')
-			br
 
-			input(type='text', name='author', value='#{book.author}', placeholder='Author')
-			br
-			
-			input(type='text', name='pages', value='#{book.pages}', placeholder='Pages')
-			br
-			
-			input(type='text', name='price', value='#{book.price}', placeholder='Price')
-			br
-			
-			input(type='text', name='image_url', value='#{book.image_url}', placeholder='Image URL')
-			br
+		button(ng-click="updateBook()") Update
+		br
+		br
 
-			input(type='hidden', name='id', value='#{book._id}')
-			br
-
-			input(type='submit', name='submit', value='Submit')
-			br
-
-			a(href='/books/show/#{book._id}') Back
+		a(href='#/books/show/{{form._id}}') Back

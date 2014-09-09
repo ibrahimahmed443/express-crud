@@ -18,6 +18,14 @@ booksApp.config(['$routeProvider',
 			templateUrl: 'partials/new',
 			controller: 'NewCtrl'
 		}).
+		when('/books/show/:book_id', {
+			templateUrl: 'partials/show',
+			controller: 'ShowCtrl'
+		}).
+		when('/books/edit/:book_id', {
+			templateUrl: 'partials/edit',
+			controller: 'EditCtrl'
+		}).
 		otherwise({ redirectTo: '/' });
 }]);
 
